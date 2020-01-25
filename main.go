@@ -6,6 +6,7 @@ import (
 
 	"github.com/heetch/confita"
 	"github.com/heetch/confita/backend/env"
+	"github.com/heetch/confita/backend/file"
 	"github.com/heetch/confita/backend/flags"
 )
 
@@ -18,6 +19,8 @@ func main() {
 	loader := confita.NewLoader(
 		env.NewBackend(),
 		flags.NewBackend(),
+		file.NewOptionalBackend("config.json"),
+		file.NewOptionalBackend("config.yaml"),
 	)
 
 	cfg := Config{
